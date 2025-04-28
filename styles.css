@@ -1,0 +1,159 @@
+/* styles.css */
+body {
+    margin: 0;
+    overflow: hidden; /* Prevent scrollbars */
+    font-family: 'Inter', sans-serif; /* Use Inter font (ensure font is loaded or use fallback) */
+    /* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap'); */
+    background-color: #0a0514; /* Match background */
+}
+
+#threejs-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Place behind controls */
+}
+
+#controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 280px; /* Fixed width for the panel */
+    background-color: rgba(30, 30, 50, 0.8); /* Semi-transparent dark background */
+    backdrop-filter: blur(5px); /* Blur effect */
+    -webkit-backdrop-filter: blur(5px); /* Safari support */
+    padding: 20px;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    color: #e0e0e0; /* Light text color */
+    max-height: calc(100vh - 40px); /* Limit height */
+    overflow-y: auto; /* Allow scrolling if needed */
+}
+
+/* Custom scrollbar for controls panel */
+#controls::-webkit-scrollbar {
+    width: 6px;
+}
+
+#controls::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+#controls::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 120, 0.7);
+    border-radius: 3px;
+}
+
+#controls::-webkit-scrollbar-thumb:hover {
+    background: rgba(120, 120, 150, 0.9);
+}
+
+/* Styling for sliders */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    transition: background 0.2s ease; /* Smooth transition */
+}
+input[type="range"]:hover {
+     background: rgba(255, 255, 255, 0.3);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #a855f7; /* Purple accent */
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: background 0.2s ease, transform 0.1s ease; /* Smooth transition */
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+    background: #c084fc; /* Lighter purple on hover */
+}
+input[type="range"]::-webkit-slider-thumb:active {
+    transform: scale(1.1); /* Slightly enlarge thumb when dragging */
+}
+
+
+input[type="range"]::-moz-range-thumb {
+    width: 16px; /* Adjust size if needed */
+    height: 16px;
+    background: #a855f7;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    transition: background 0.2s ease, transform 0.1s ease; /* Smooth transition */
+}
+input[type="range"]::-moz-range-thumb:hover {
+    background: #c084fc;
+}
+input[type="range"]::-moz-range-thumb:active {
+    transform: scale(1.1);
+}
+
+
+label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 500; /* Using Tailwind classes in HTML for this */
+    font-size: 0.9rem;
+}
+
+.value-display {
+    font-size: 0.8rem;
+    color: #c0c0c0;
+    margin-left: 8px;
+    display: inline-block; /* Align better with slider */
+    min-width: 45px; /* Ensure space for value */
+    text-align: right;
+}
+
+.control-group {
+    margin-bottom: 15px;
+}
+
+/* Button Styling (using Tailwind in HTML, but adding base transitions/active states here) */
+.button-group button,
+#controls button { /* Apply to all buttons in controls */
+    transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    /* Base styles defined by Tailwind classes */
+}
+
+.button-group button:active,
+#controls button:active {
+    transform: scale(0.95);
+}
+
+/* Active state style for state buttons */
+.button-group button.active {
+    background-color: #a855f7; /* Purple accent for active button */
+    color: white;
+    font-weight: 600; /* Using Tailwind class */
+    box-shadow: 0 0 10px rgba(168, 85, 247, 0.5); /* Add a subtle glow */
+}
+
+/* Style for disabled button */
+#controls button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none; /* Prevent active scale effect */
+}
+
+/* Recording indicator (Tailwind handles pulse, etc.) */
+#recording-indicator {
+    /* Base styles in HTML, animation via Tailwind */
+}

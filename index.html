@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three.js Background Controls</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gif.js/0.2.0/gif.js"></script>
+
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="mobile.css">
+
+</head>
+<body>
+
+    <div id="threejs-bg"></div>
+
+    <div id="recording-indicator" class="hidden fixed top-4 left-4 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-full animate-pulse z-20">
+        REC
+    </div>
+
+
+    <div id="controls">
+        <h2 class="text-lg font-semibold mb-4 text-center text-white">Background Controls</h2>
+
+        <div class="control-group button-group flex justify-around mb-5">
+            <button id="btn-normal" class="px-3 py-1 bg-gray-600 hover:bg-gray-500 rounded-md text-sm">Normal</button>
+            <button id="btn-rave" class="px-3 py-1 bg-gray-600 hover:bg-gray-500 rounded-md text-sm">Rave</button>
+            <button id="btn-techno" class="px-3 py-1 bg-gray-600 hover:bg-gray-500 rounded-md text-sm">Techno</button>
+        </div>
+
+        <div class="control-group">
+            <label for="rotationSpeed">Rotation Speed Multiplier</label>
+            <input type="range" id="rotationSpeed" min="0.1" max="5" step="0.1" value="1">
+            <span class="value-display" id="rotationSpeedValue">1.0x</span>
+        </div>
+
+        <div class="control-group">
+            <label for="followSpeed">Mouse Sensitivity</label>
+            <input type="range" id="followSpeed" min="0.005" max="0.1" step="0.001" value="0.02">
+            <span class="value-display" id="followSpeedValue">0.020</span>
+        </div>
+
+        <div class="control-group">
+            <label for="breathingIntensity">Breathing Intensity</label>
+            <input type="range" id="breathingIntensity" min="0" max="200" step="1" value="40">
+            <span class="value-display" id="breathingIntensityValue">40</span>
+        </div>
+
+        <div class="control-group">
+            <label for="breathingSpeed">Breathing Speed</label>
+            <input type="range" id="breathingSpeed" min="0.00001" max="0.001" step="0.00001" value="0.00015">
+            <span class="value-display" id="breathingSpeedValue">0.00015</span>
+        </div>
+
+        <div class="control-group">
+            <label for="fogDensity">Fog Density</label>
+            <input type="range" id="fogDensity" min="0.0001" max="0.005" step="0.0001" value="0.001">
+            <span class="value-display" id="fogDensityValue">0.0010</span>
+        </div>
+
+         <div class="control-group">
+            <label for="opacityMultiplier">Particle Opacity</label>
+            <input type="range" id="opacityMultiplier" min="0.1" max="1.5" step="0.05" value="1.0">
+            <span class="value-display" id="opacityMultiplierValue">1.00</span>
+        </div>
+
+         <div class="control-group">
+            <label for="sizeMultiplier">Particle Size</label>
+            <input type="range" id="sizeMultiplier" min="0.2" max="3.0" step="0.1" value="1.0">
+            <span class="value-display" id="sizeMultiplierValue">1.0</span>
+        </div>
+
+        <div class="control-group">
+            <label for="hueOffset">Color Hue Offset</label>
+            <input type="range" id="hueOffset" min="-0.5" max="0.5" step="0.01" value="0.0">
+            <span class="value-display" id="hueOffsetValue">+0.00</span>
+        </div>
+
+
+         <div class="control-group mt-5 space-y-2">
+             <button id="btn-pause" class="w-full px-3 py-2 bg-yellow-600 hover:bg-yellow-500 rounded-md text-sm text-white font-medium">Pause Animation</button>
+             <button id="btn-screenshot" class="w-full px-3 py-2 bg-cyan-600 hover:bg-cyan-500 rounded-md text-sm text-white font-medium">Save Screenshot</button>
+             <button id="btn-gif" class="w-full px-3 py-2 bg-orange-600 hover:bg-orange-500 rounded-md text-sm text-white font-medium">Record GIF (5s)</button>
+             <span id="gif-status" class="text-xs text-gray-400 block text-center mt-1"></span>
+         </div>
+
+    </div>
+
+    <script src="background.js" defer></script>
+    <script src="controls.js" defer></script>
+
+</body>
+</html>
